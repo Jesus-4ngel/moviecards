@@ -17,11 +17,11 @@ jobs:
         run: echo "pruebas"
 
   qa: 
-  needs: test
-  runs-on: ubuntu-latest
-  steps:
-    - name: calidad
-      run: echo "calidad"
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: calidad
+        run: echo "calidad"
 
   deploy:
     needs: qa
