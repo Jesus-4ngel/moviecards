@@ -35,8 +35,7 @@ jobs:
 
       - name: Instalar Chrome y ChromeDriver para pruebas end to end
         run: |
-          wget https://dl.google.com/linux/direct/google-chrome-
-          stable_current_amd64.deb
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           
           sudo dpkg -i google-chrome-stable_current_amd64.deb
           
@@ -46,8 +45,7 @@ jobs:
           https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
           
           curl -L -o chromedriver.zip
-          https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chr
-          omedriver_linux64.zip
+          https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
 
           unzip chromedriver.zip
 
