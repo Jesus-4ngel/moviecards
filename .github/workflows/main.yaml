@@ -96,7 +96,7 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'moviecards-pre-delhoyo'
-          slot-name: 'Stage'
+          slot-name: 'Production'
           package: '*.jar'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_48483DB51B6C4E7E8E452E6B81F0EA61 }}
 
