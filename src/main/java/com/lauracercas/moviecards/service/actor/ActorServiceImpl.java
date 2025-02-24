@@ -18,10 +18,13 @@ import java.util.List;
 @Service
 public class ActorServiceImpl implements ActorService {
 
-    @Autowired
-    RestTemplate template;
-
+    private final RestTemplate template;
     String url = "https://moviecards-service-delhoyo.azurewebsites.net/actors";
+
+    @Autowired
+    public ActorServiceImpl(RestTemplate template) {
+        this.template = template;
+    }
 
     @Override
     public List<Actor> getAllActors() {

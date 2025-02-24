@@ -17,10 +17,14 @@ import java.util.List;
 @Service
 public class MovieServiceImpl implements MovieService {
 
-    @Autowired
-    RestTemplate template;
+    private final RestTemplate template;
 
     String url = "https://moviecards-service-delhoyo.azurewebsites.net/movies";
+
+    @Autowired
+    public MovieServiceImpl(RestTemplate template) {
+        this.template = template;
+    }
 
     @Override
     public List<Movie> getAllMovies() {
