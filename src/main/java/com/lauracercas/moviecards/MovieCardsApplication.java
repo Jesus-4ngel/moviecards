@@ -2,6 +2,8 @@ package com.lauracercas.moviecards;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * Autor: Laura Cercas Ramos
@@ -14,5 +16,11 @@ public class MovieCardsApplication {
     public static void main(String[] args) {
         SpringApplication.run(MovieCardsApplication.class, args);
     }
+
+    @Bean
+	public RestTemplate template() {
+		RestTemplate template = new RestTemplate();
+		return template;
+	}
 
 }
