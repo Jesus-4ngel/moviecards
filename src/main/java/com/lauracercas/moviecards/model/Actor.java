@@ -23,6 +23,9 @@ public class Actor {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd") // Añadido por Jesús Ángel del Hoyo
+    private Date deadDate;
+
     private String country;
 
     @ManyToMany(mappedBy = "actors")
@@ -59,6 +62,17 @@ public class Actor {
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
+
+    // Añadido por Jesús Ángel del Hoyo
+    public Date getDeadDate() {
+        return deadDate;
+    }
+
+    public void setDeadDate(Date deadDate) {
+        this.deadDate = deadDate;
+    }
+
+    // Fin de la parte añadida por Jesús Ángel del Hoyo
 
     public String getCountry() {
         return country;
