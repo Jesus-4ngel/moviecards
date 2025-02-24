@@ -48,6 +48,10 @@ public class ActorController {
             return "actors/form";
         }
         Actor actorSaved = actorService.save(actor);
+        if (actorSaved == null) {
+            return "redirect:actors";
+        }
+
         if (actor.getId() != null) {
             model.addAttribute("message", Messages.UPDATED_ACTOR_SUCCESS);
         } else {

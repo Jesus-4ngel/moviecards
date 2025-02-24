@@ -48,6 +48,10 @@ public class MovieController {
             return "movies/form";
         }
         Movie movieSaved = movieService.save(movie);
+        if (movieSaved == null) {
+            return "redirect:movies";
+        }
+
         if (movieSaved.getId() != null) {
             model.addAttribute("message", Messages.UPDATED_MOVIE_SUCCESS);
         } else {
