@@ -78,9 +78,31 @@ jobs:
         run: |
           mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin
 
-  deploy:
+  stage:
     runs-on: ubuntu-latest
     needs: qa
+    environment:
+      name: 'Stage'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: moviecards-java
+      
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'moviecards-pre-delhoyo'
+          slot-name: 'Stage'
+          package: '*.jar'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_48483DB51B6C4E7E8E452E6B81F0EA61 }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: stage
     if: github.ref=='refs/heads/master'
     environment:
       name: 'Production'
