@@ -71,7 +71,7 @@ public class Actor {
     public void setDeadDate(Date deadDate) {
         this.deadDate = deadDate;
     }
-
+  
     // Fin de la parte añadida por Jesús Ángel del Hoyo
 
     public String getCountry() {
