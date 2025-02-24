@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.text.SimpleDateFormat;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.MockitoAnnotations.openMocks;
@@ -49,7 +50,7 @@ class ActorServiceImplTest {
     @Test
     public void shouldGetAllActors() {
 
-        String jsonResponse = "[{\"id\":1, \"name\":\"Sample Actor\", \"birthDate\":\"2000-01-01T23:00:00.000+00:00\", \"country\":\"Spain\", \"movies\":[]}]";
+        String jsonResponse = "[{\"id\":1, \"name\":\"Sample Actor\", \"birthDate\":\"2000-01-01T23:00:00.000+00:00\", \"deadDate\":\"2021-01-01T23:00:00.000+00:00\", \"country\":\"Spain\", \"movies\":[]}]";
 
         mockServer.expect(MockRestRequestMatchers.requestTo(BASE_URL))
                 .andRespond(MockRestResponseCreators.withSuccess(jsonResponse, MediaType.APPLICATION_JSON));
@@ -64,7 +65,7 @@ class ActorServiceImplTest {
     @Test
     public void shouldGetActorById() {
 
-        String jsonResponse = "{\"id\":1, \"name\":\"Sample Actor\", \"birthDate\":\"2000-01-01T23:00:00.000+00:00\", \"country\":\"Spain\", \"movies\":[]}";
+        String jsonResponse = "{\"id\":1, \"name\":\"Sample Actor\", \"birthDate\":\"2000-01-01T23:00:00.000+00:00\",\"deadDate\":\"2021-01-01T23:00:00.000+00:00\", \"country\":\"Spain\", \"movies\":[]}";
 
         mockServer.expect(MockRestRequestMatchers.requestTo(BASE_URL + "/1"))
                 .andRespond(MockRestResponseCreators.withSuccess(jsonResponse, MediaType.APPLICATION_JSON));
@@ -80,7 +81,7 @@ class ActorServiceImplTest {
     @Test
     public void shouldSaveActor() throws Exception {
         String jsonRequest = "{\"name\":\"New Actor\"}";
-        String jsonResponse = "{\"id\":1, \"name\":\"New Actor\"}";
+        String jsonResponse = "{\"id\":1, \"name\":\"New Actor\", \"deadDate\":\"2021-01-01T23:00:00.000+00:00\"}";
         
         mockServer.expect(MockRestRequestMatchers.requestTo(BASE_URL))
             .andExpect(MockRestRequestMatchers.method(HttpMethod.POST))
